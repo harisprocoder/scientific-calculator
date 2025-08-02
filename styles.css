@@ -1,0 +1,225 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+}
+
+.calculator-container {
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border-radius: 20px;
+    padding: 20px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.calculator {
+    background: linear-gradient(145deg, #1a1a1a, #2d2d2d);
+    border-radius: 15px;
+    padding: 20px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    min-width: 350px;
+    max-width: 400px;
+}
+
+.display {
+    background: linear-gradient(145deg, #0a0a0a, #1a1a1a);
+    border-radius: 10px;
+    padding: 20px;
+    margin-bottom: 20px;
+    text-align: right;
+    min-height: 80px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.history {
+    color: #888;
+    font-size: 14px;
+    margin-bottom: 5px;
+    min-height: 20px;
+    word-wrap: break-word;
+}
+
+.current {
+    color: #fff;
+    font-size: 32px;
+    font-weight: 600;
+    word-wrap: break-word;
+    overflow: hidden;
+}
+
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 10px;
+}
+
+.btn {
+    border: none;
+    border-radius: 10px;
+    padding: 15px 10px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Inter', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+    transition: left 0.5s;
+}
+
+.btn:hover::before {
+    left: 100%;
+}
+
+.number {
+    background: linear-gradient(145deg, #3a3a3a, #4a4a4a);
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.number:hover {
+    background: linear-gradient(145deg, #4a4a4a, #5a5a5a);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.4);
+}
+
+.operator {
+    background: linear-gradient(145deg, #ff9500, #ff8000);
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(255, 149, 0, 0.3);
+}
+
+.operator:hover {
+    background: linear-gradient(145deg, #ff8000, #ff7000);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(255, 149, 0, 0.4);
+}
+
+.scientific {
+    background: linear-gradient(145deg, #007aff, #0056cc);
+    color: #fff;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(0, 122, 255, 0.3);
+}
+
+.scientific:hover {
+    background: linear-gradient(145deg, #0056cc, #004499);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(0, 122, 255, 0.4);
+}
+
+.memory {
+    background: linear-gradient(145deg, #34c759, #28a745);
+    color: #fff;
+    font-size: 14px;
+    box-shadow: 0 4px 8px rgba(52, 199, 89, 0.3);
+}
+
+.memory:hover {
+    background: linear-gradient(145deg, #28a745, #1e7e34);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(52, 199, 89, 0.4);
+}
+
+.clear {
+    background: linear-gradient(145deg, #ff3b30, #dc3545);
+    color: #fff;
+    box-shadow: 0 4px 8px rgba(255, 59, 48, 0.3);
+}
+
+.clear:hover {
+    background: linear-gradient(145deg, #dc3545, #c82333);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(255, 59, 48, 0.4);
+}
+
+.equals {
+    background: linear-gradient(145deg, #34c759, #28a745);
+    color: #fff;
+    font-size: 18px;
+    font-weight: 600;
+    box-shadow: 0 4px 8px rgba(52, 199, 89, 0.3);
+    grid-column: span 2;
+}
+
+.equals:hover {
+    background: linear-gradient(145deg, #28a745, #1e7e34);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 12px rgba(52, 199, 89, 0.4);
+}
+
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive Design */
+@media (max-width: 480px) {
+    .calculator {
+        min-width: 300px;
+        padding: 15px;
+    }
+    
+    .btn {
+        padding: 12px 8px;
+        font-size: 14px;
+    }
+    
+    .scientific {
+        font-size: 12px;
+    }
+    
+    .current {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 360px) {
+    .calculator {
+        min-width: 280px;
+        padding: 10px;
+    }
+    
+    .btn {
+        padding: 10px 6px;
+        font-size: 12px;
+    }
+    
+    .scientific {
+        font-size: 10px;
+    }
+}
+
+/* Animation for button press */
+@keyframes buttonPress {
+    0% { transform: scale(1); }
+    50% { transform: scale(0.95); }
+    100% { transform: scale(1); }
+}
+
+.btn:active {
+    animation: buttonPress 0.1s ease;
+} 
